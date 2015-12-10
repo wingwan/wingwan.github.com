@@ -76,11 +76,11 @@
         }else{
             curLi.style.left =  - curWidth * i + "px";
             if(i > 1){
-                curLi.style.transform = goAway;
+                translate(curLi, goAway, '')
                 circle.push(curLi);
             }else{
                 show.push(curLi);
-                curLi.style.transform = goPre;
+                translate(curLi, goPre, '');
             }
         }
 
@@ -92,21 +92,34 @@
     btn.onclick = function(){
         //已展示的图片滚粗
         var showFirst = show.shift();
-        showFirst.style.transform = goAway;
-        showFirst.style.transitionDuration = "300ms";
+        translate(showFirst, goAway, "300ms");
 
         //正在展示的图片
-        show[0].style.transform = goIn;
-        show[0].style.transitionDuration = "300ms";
+        translate(show[0], goIn, "300ms");
         circle.splice(0, 0, showFirst);
 
         //准备好下一个将要展示的图片
         var nextPre = circle.pop();
-        nextPre.style.transform = goPre;
+        translate(nextPre, goPre, "0ms");
         show.push(nextPre);
-        nextPre.style.transitionDuration = "0ms";
 
     };
+
+    function translate(dom, goType, time){
+        dom.style.transform =
+                dom.style.webkitTransform =
+                        dom.style.mozTransform =
+                                dom.style.msTransform =
+                                        dom.style.oTransform = goType;
+
+        dom.style.transitionDuration =
+                dom.style.webkitTransitionDuration =
+                        dom.style.mozTransitionDuration =
+                                dom.style.msTransitionDuration =
+                                        dom.oTransitionDuration = time;
+
+
+    }
 
 </script>
 </body>
