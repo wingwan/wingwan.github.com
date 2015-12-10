@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+			拖拽
+		</title>
+		<style>
+		#test{width:100px;height:100px;background: tomato;position: absolute;}
+		</style>
+	</head>
+	<body>
+		<div id="test"></div>
+	</body>
+	<script>
+		var dom = document.getElementById("test");
+		var startX = 0, startY = 0, startLeft = 0, startTop = 0;
+		dom.onmousedown = function(e){
+			dom.style.cursor = "move";
+			startDrag(e);
+		}
+		
+		function startDrag(e){
+			var top, left;
+			startX = e.clientX, startY = e.clientY, startLeft = dom.offsetLeft, startTop = dom.offsetTop;
+
+			dom.onmousemove = function(event){
+				left = event.clientX - startX + startLeft;
+				top = event.clientY - startY + startTop;
+				//dom.style.cursor = "move";
+				dom.style.left = left;
+				dom.style.top = top;
+
+			}
+		}
+
+		dom.onmouseup = function(){
+			drop();
+		}
+		function drop(){
+			dom.removeEventListener("mousemove", startDrag, true);
+			dom.onmousemove = null;
+		}
+
+	</script>
+</html>

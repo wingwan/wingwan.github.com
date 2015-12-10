@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+			多个节点拖拽
+		</title>
+		<style>
+		#test{width:100px;height:100px;background: tomato;position: absolute;}
+		#test2{width:100px;height:100px;background: pink;position: absolute;top: 200px;}
+
+		</style>
+	</head>
+	<body>
+		<div id="test"></div>
+		<div id="test2"></div>
+	</body>
+	<script>
+		var Drag = {
+
+			obj: null,
+
+			init: function(o){
+				//鼠标按下时触发开始拖动
+				o.onmousedown = Drag.start;
+
+			},
+			start: function(e){
+				//记录当前被拖动的元素
+				Drag.obj = this;
+
+				//绑定拖动事件
+				document.onmousemove = Drag.drag;
+				//绑定结束事件
+				document.onmouseup = Drag.end;
+
+			},
+
+			drag: function(e){
+				var o = Drag.obj;
+
+				e = e || window.event;
+
+				var startX = parseInt(o.offsetLeft);
+				var startY = parseInt(o.offsetTop);
+
+				o.style.left = e.clientX - o.lastMouseX + startX + "px";
+				o.style.top = e.clientY - o.lastMouseY + startY + "px";
+
+				o.lastMouseX = e.clientX;
+				o.lastMouseY = e.clientY;
+			},
+
+			end: function(){
+				document.onmousemove = null;
+				Drag.obj = null;
+			}
+		};
+
+		Drag.init(document.getElementById("test"));
+		Drag.init(document.getElementById("test2"));
+
+	</script>
+</html>
