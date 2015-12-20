@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <p>
+        \1表示反向引用
+        注意区别
+        [abc]x[abc]
+        和
+        [abc]x\1
+
+    </p>
+    <script>
+        var str = prompt("aaa");
+        function myZip(str){
+            var reg = /([a-z])\1+/g;//这里的\1用来指代重复
+            var tempStr = str.replace(reg,function($1,$2){
+                 console.log($1);
+                 console.log($2);
+                 console.log("========================");
+                return $1.length+$2;
+            });
+            return tempStr;
+        }
+        console.log(myZip(str));
+
+
+    </script>
+</body>
+</html>

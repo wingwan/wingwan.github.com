@@ -96,7 +96,7 @@
 
         //正在展示的图片
         translate(show[0], goIn, "300ms");
-        circle.splice(0, 0, showFirst);
+        circle.unshift(showFirst);
 
         //准备好下一个将要展示的图片
         var nextPre = circle.pop();
