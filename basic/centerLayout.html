@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .certainWidthWrap{
+            width: 100%;
+            height: 200px;
+            text-align: center; /* 只能让文字水平居中*/
+            background: gainsboro;
+        }
+        .certainWidth{
+            width: 800px;
+            margin: 0 auto;
+            background: pink;
+        }
+        .uncertainWidthWrap{
+            height: 200px;
+            text-align: center;
+        }
+        .uncertainWidth{
+            display: inline-block;
+            background: darkcyan;
+        }
+        .certainHeightWrap{
+            height: 200px;
+            background: lightgray;
+            position: relative;
+        }
+        .certainHeight{
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            height: 50px;
+            background: darkgoldenrod;
+        }
+        .uncertainHeightWrap{
+            width: 100%;
+            height: 200px;
+            display: table;
+            overflow: hidden;
+        }
+
+        .uncertainHeight{
+            display: table-cell;
+            vertical-align: middle;
+
+        }
+        .uncertainIn{
+            background: lightgreen;
+        }
+
+        .certainWrap{
+            height: 200px;
+            background: lightgray;
+            position: relative;
+
+        }
+        .certain{
+            width: 100px;
+            height: 100px;
+            background: purple;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="certainWidthWrap">
+        <div class="certainWidth">
+            已知宽度为800px
+            水平居中
+        </div>
+    </div>
+    <div class="uncertainWidthWrap">
+        <div class="certainWidth">
+            已知宽度为800px
+            水平居中
+        </div>
+        <div class="uncertainWidth">
+            宽度不固定
+            水平居中
+        </div>
+    </div>
+
+    <div class="certainHeightWrap">
+        <div class="certainHeight">
+            <p>已知高度为50px,垂直居中</p>
+        </div>
+    </div>
+
+    <div class="uncertainHeightWrap">
+        <div class="uncertainHeight">
+            <div class="uncertainIn">
+                <p>高度不固定</p>
+                <p>垂直居中</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="certainWrap">
+        <div class="certain">
+            已知宽度50px，高度50px
+        </div>
+    </div>
+
+</body>
+</html>
