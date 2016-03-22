@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    var gameList = [
+        '欢乐斗地主',
+        '魂斗罗',
+        '天魔幻想',
+        '全民斗战神',
+        '王者荣耀',
+        '火影忍者',
+        '剑侠情缘',
+        '节奏大师',
+        '轩辕传奇',
+        '天天炫斗',
+        '全民农场',
+        '雷霆战机',
+        '天天德州',
+        '糖果传奇',
+        '天天风之旅',
+        '暗黑战神',
+        '天天来塔防',
+        '傲世西游',
+        '刀塔传奇',
+        '战争总动员',
+        '全民英雄',
+        '神之刃',
+        '无限塔防',
+        '时空猎人',
+        '开心消消乐',
+        '坦克射击',
+        '捕鱼来了',
+        '天天争霸',
+        '植物大战僵尸',
+        '全民突击'
+    ];
+
+    var sqlArr = [];
+    for(var i = 0, len = gameList.length; i < len; i++){
+        var tmp  = "select a.* "+
+                "from fit_bug as a, fit_task as b "+
+        "where a.title "+
+        "like '%【"+ gameList[i] + "】%' " +
+        "and a.create_time >='2016-02-01 00:00:00' and a.create_time < '2016-03-01 00:00:00' "+
+                "a.task_id = b.id and b.type = 1";
+        sqlArr.push(tmp);
+    }
+    document.write(sqlArr.join(" union all "));
+</script>
+
+</body>
+</html>

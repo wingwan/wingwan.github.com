@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .target{
+            width: 600px;
+            height: 300px;
+            border: 2px solid gray;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        dataTransfer.setData() 方法设置被拖数据的数据类型和值：
+    </p>
+    
+    <div id="target" class="target">
+        
+    </div>
+
+    <img id="drag" src="images/women/qzx.png" alt="" draggable="true"/>
+
+    <script>
+
+            document.getElementById("drag").addEventListener("dragstart", function(e){
+                e.dataTransfer.setData("dragDomId", e.target.id);
+
+            });
+
+            document.getElementById("target").addEventListener("dragover", function(e){
+                e.preventDefault();
+            });
+            document.getElementById("target").addEventListener("drop", function (e) {
+                e.preventDefault();
+                var curId = e.dataTransfer.getData("dragDomId");
+                e.target.appendChild(document.getElementById(curId));
+            });
+
+    </script>
+
+</body>
+</html>

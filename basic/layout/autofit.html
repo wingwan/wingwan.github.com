@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .leftWrap{
+            float: left;
+            width: 200px;
+            height: 100px;
+            border: 1px solid darkblue;
+        }
+
+        .rightWrap{
+            /*margin-left: 200px;*/
+            height: 200px;
+            border: 1px solid darkgreen;
+        }
+
+        .flexWrap{
+            display: flex;
+        }
+        .flexWrap div{
+            border: 1px solid black; 从v
+        }
+
+        .flex{
+            flex: 1;
+
+        }
+        .flex2{
+            flex: 2;
+        }
+        .flexWidth{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="leftWrap">左侧固定布局</div>
+<div class="rightWrap">右侧自适应宽度</div>
+
+<div class="flexWrap">
+    <div class="flex">flex</div>
+    <div class="flex2">flex2</div>
+    <div class="flexWidth">固定宽度</div>
+</div>
+
+</body>
+</html>

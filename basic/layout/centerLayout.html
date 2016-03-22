@@ -74,22 +74,25 @@
         <div class="certainWidth">
             已知宽度为800px
             水平居中
+            <p>当前容器通过margin: 0 auto;即可</p>
         </div>
     </div>
     <div class="uncertainWidthWrap">
-        <div class="certainWidth">
-            已知宽度为800px
-            水平居中
-        </div>
+
         <div class="uncertainWidth">
             宽度不固定
             水平居中
+            <p>父容器设置：text-align:center;</p>
+            <p>当前容器设置: display:inline-block;</p>
         </div>
     </div>
 
     <div class="certainHeightWrap">
         <div class="certainHeight">
             <p>已知高度为50px,垂直居中</p>
+            <p>父容器设置position:relative;</p>
+            <p>当前容器设置：position:absolute;top:50%;margin-top:-25px;</p>
+
         </div>
     </div>
 
@@ -98,6 +101,8 @@
             <div class="uncertainIn">
                 <p>高度不固定</p>
                 <p>垂直居中</p>
+                <p>父容器设置：display:table;</p>
+                <p>当前容器设置：display:table-cell;</p>
             </div>
         </div>
     </div>
@@ -105,10 +110,12 @@
     <div class="certainWrap">
         <div class="certain">
             已知宽度50px，高度50px
+            <p>父容器设置：position:relative;</p>
+            <p>当前容器：position:absolute;top:50%;left:50%;margin-top:-25px;margin-left:-25px;</p>
         </div>
     </div>
 
-    
+
 
 </body>
 </html>

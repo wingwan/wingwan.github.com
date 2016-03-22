@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{
+            font-size: 1rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        li{
+            width: 10rem;
+            height: 5rem;
+            background: deeppink;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        li:nth-child(2n){
+            background: yellowgreen;
+        }
+        li:nth-child(3n){
+            background: darkorange;
+        }
+
+
+    </style>
+</head>
+<body>
+<ul>
+    <li>这是一个list</li>
+    <li>这是一个list</li>
+    <li>这是一个list</li>
+    <li>这是一个list</li>
+    <li>这是一个list</li>
+</ul>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        document.documentElement.style.fontSize = window.innerWidth/10 + 'px';
+    }, false);
+    window.addEventListener('resize', function(){
+        document.documentElement.style.fontSize = window.innerWidth/10 + 'px';
+    }, false);
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>flex实现瀑布流布局</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .quantize {
+            display: flex;
+            flex-flow: row wrap;
+            font-size: 0;
+            width: 80%;
+            margin: 0 auto;
+        }
+        .quantize figure {
+            margin: 0;
+        }
+        .quantize figure img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="quantize">
+</div>
+
+<script>
+    var container = document.getElementsByClassName('quantize')[0];
+    var butterflies = [ "orange-butterfly.jpg", "butterfly-on-yellow-flower.jpg", "butterfly-on-petal.jpg", "albino-butterfly.jpg", "blue-butterfly.jpg"];
+    function preloadImage(filename){
+        var img=new Image();
+        img.onload = function(){
+            img.aspectRatio = img.naturalWidth / img.naturalHeight;
+            var fig = document.createElement('figure');
+            fig.appendChild(img);
+            container.appendChild(fig);
+        };
+        img.src= "images/butterfly/" + filename;
+        img.alt = "";
+    }
+    function loadImages() {
+        for (var i = 0; i < butterflies.length; ++i) {
+            var filename = butterflies[i];
+            preloadImage(filename);
+        }
+    }
+
+    function fitFlex() {
+        //集合
+        var flexGroup = container.querySelectorAll("figure");
+        //数组
+        var flexArray = Array.prototype.slice.call(flexGroup, 0);
+        //排序
+        flexArray.sort(function (a, b) {
+            //降序
+            imageAspectRatioA = a.firstElementChild.aspectRatio;
+            imageAspectRatioB = b.firstElementChild.aspectRatio;
+            if (imageAspectRatioA < imageAspectRatioB) { return 1; }
+            if (imageAspectRatioA > imageAspectRatioB) { return -1; }
+            return 0;
+        });
+        //获取最大的宽长比
+        var widest = flexArray[0].firstElementChild.aspectRatio;
+        //设置最窄宽度
+        var smallestWidth = "300";
+
+        flexArray.forEach(function(box) {
+
+            var flex = 1 / (widest / box.firstElementChild.aspectRatio);
+            console.log(flex);
+            if (flex == 0) { flex = 1; }
+            boxWidth = smallestWidth * flex;
+            box.style.cssText = "flex: "+flex+"; min-width: "+boxWidth+"px";
+            //box.style.cssText = "flex:1;min-width: 300px;";
+            //box.style.cssText = "flex:1;min-width: "+boxWidth+"px";
+        });
+    }
+
+    loadImages();
+    window.addEventListener("load", function() {
+        fitFlex();
+    });
+</script>
+
+</body>
+</html>

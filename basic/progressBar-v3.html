@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>进度条-v3</title>
+    <style>
+
+        .loading{
+            width:397px;
+            height:49px;
+            background: red;
+        }
+        .loading div{
+            width:0px;
+            height:48px;
+            background: gray;
+            color:#fff;
+            text-align:center;
+            font-family:Tahoma;
+            font-size:18px;
+            line-height:48px;
+        }
+    </style>
+</head>
+<body>
+<div id="center">
+    <div id="message" class="loading"></div>
+    <div id="loading" class="loading"></div>
+</div>
+
+<script type="text/javascript">
+    function Progress(){
+        var obj = null;
+        var val = 0;
+        var start = 0;
+        var end = false;
+
+        this.init = function (o) {
+            obj = o.dom;
+            val = o.progress;
+            var bar = document.createElement("div");
+
+            obj.appendChild(bar);
+
+            _loading();
+
+        };
+
+        _setVal = function(progress){
+            var o = obj.childNodes[0];
+            o.style.width = progress + "%";
+
+            o.innerHTML = progress + "%";
+        };
+
+        _loading = function(){
+            var timer;
+            var i = start;
+            if(i <= val){
+                timer = setTimeout(_loading, 50);
+                _setVal(i);
+                start ++;
+            }else{
+                clearTimeout(timer);
+                end = true;
+            }
+        };
+        this.getEnd = function(){
+            return end;
+        };
+
+    }
+
+    var messageDom = new Progress();
+    messageDom.init({
+        dom: document.getElementById("message"),
+        progress: 50
+    });
+
+    setTimeout(function(){
+        if(messageDom.getEnd() == true){
+            var loadingDom = new Progress();
+
+            loadingDom.init({
+                dom: document.getElementById("loading"),
+                progress: 70
+            });
+        }
+    }, 5000);
+
+
+
+
+</script>
+</body>
+</html>

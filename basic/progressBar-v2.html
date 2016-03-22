@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>进度条-v2</title>
+    <style>
+
+        .loading{
+            width:397px;
+            height:49px;
+            background: red;
+        }
+        .loading div{
+            width:0px;
+            height:48px;
+            background: gray;
+            color:#fff;
+            text-align:center;
+            font-family:Tahoma;
+            font-size:18px;
+            line-height:48px;
+        }
+    </style>
+</head>
+<body>
+<div id="center">
+    <div id="message" class="loading"></div>
+    <div id="loading" class="loading"></div>
+</div>
+
+<script type="text/javascript">
+    var Progress = {
+        obj: null,
+        val: 0,
+        start: 0,
+
+        init: function (o) {
+            Progress.obj = o.dom;
+            Progress.val = o.progress;
+            var bar = document.createElement("div");
+
+            Progress.obj.appendChild(bar);
+
+            Progress.loading();
+
+        },
+
+        setVal: function(progress){
+            var o = Progress.obj.childNodes[0];
+            o.style.width = progress + "%";
+
+            o.innerHTML = progress + "%";
+        },
+
+        loading: function(){
+            var timer;
+            var i = Progress.start;
+            if(i <= Progress.val){
+                timer = setTimeout("Progress.loading()", 50);
+                Progress.setVal(i);
+                Progress.start ++;
+            }else{
+                clearTimeout(timer);
+            }
+
+        }
+    }
+
+    var messageDom = new Progress()
+
+
+</script>
+</body>
+</html>

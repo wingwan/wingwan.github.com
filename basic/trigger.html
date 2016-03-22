@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="abc">click ?</div>
+
+<script>
+    // 直接获取element绑定的方法调用就可以了
+    var triggle = function(element, method) {
+        var func = element[method];
+        return func();
+    }
+
+    document.getElementById("abc").onclick = function(e){
+        console.log(e.target);
+        console.log("abc");
+    }
+
+    window.onload=function() {
+        triggle(document.getElementById("abc"), "onclick");
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button id="click">onclick</button>
+    <button id="event">addEventListener</button>
+    <button id="jquery">jquery click</button>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        document.getElementById("click").onclick = function(){
+            console.log("click 1");
+        };
+
+        document.getElementById("click").onclick = function (e) {
+            console.log("click 2");
+        }
+
+        document.getElementById("event").addEventListener("click", function(e){
+            console.log("addEventListener 1");
+        });
+
+        document.getElementById("event").addEventListener("click", function(e){
+            console.log("addEventListener 2");
+        });
+
+        $("#jquery").click(function(){
+            console.log("jquery click 1");
+        });
+
+        $("#jquery").click(function(){
+            console.log("jquery click 2");
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>媒体查询</title>
+    <style>
+        body{
+            background: rgb(0,244,0);
+        }
+        .hero-text{
+            text-align: center;
+            height: 300px;
+            line-height: 300px;
+        }
+
+        @media only screen and (min-width: 500px){
+            body{
+                background: yellow;
+            }
+            .hero-text{
+                font-size: 22px;
+            }
+        }
+        @media only screen and (min-width: 800px){
+            body{
+                background: blue;
+            }
+            .hero-text{
+
+                font-size: 48px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="hero-text">
+        HERO
+    </div>
+
+</body>
+</html>
