@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="zepto.js"></script>
+    <script src="http://vm.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2.js"></script>
+    <style>
+        ul{
+            height: 1000px;
+            overflow: hidden;
+
+        }
+        ul li{
+            border: 1px solid pink;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="swipeWrap">
+    <div id="player"></div>
+</div>
+
+<script>
+
+    function initPlayer() {
+        var video = new tvp.VideoInfo();
+        video.setVid("v01838gmqsp");
+
+        var player = new tvp.Player();
+        player.create({
+            width: '100%',
+            height: '100%',
+            modId: "player",
+            video: video
+        });
+
+
+        var anotherVideo = new tvp.VideoInfo();
+        anotherVideo.setVid("a0016omqk7o");
+        $("#swipeWrap").swipeUp(function () {
+            player.play(anotherVideo);
+        });
+
+
+    }
+
+
+    initPlayer();
+
+</script>
+</body>
+</html>
