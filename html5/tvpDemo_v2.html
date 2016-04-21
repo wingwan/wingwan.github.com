@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="zepto.js"></script>
+    <script src="http://vm.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2.js"></script>
+    <script src="http://imgcache.gtimg.cn/music/h5/lib/js/module/iSlider.js?_bid=363&max_age=2592000"></script>
+    <style>
+        .item{
+            border: 4px solid pink;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<ul id="wrap">
+    <li class="item">
+        <div id="player1"></div>
+    </li>
+    <li class="item">
+        <div id="player2"></div>
+    </li>
+    <li class="item">
+        <div id="player3"></div>
+    </li>
+    <li class="item">
+        <div id="player4"></div>
+    </li>
+</ul>
+
+
+
+<script>
+
+
+    function initPlayer() {
+
+        for (var id in vidList) {
+            var curVid = vidList[id];
+
+            var video = new tvp.VideoInfo();
+
+            video.setVid(curVid);
+
+            var player = new tvp.Player();
+            player.create({
+                width: '100%',
+                height: '100%',
+                modId: id,
+                video: video
+            });
+        }
+
+
+    }
+
+    function initSlider() {
+        var slider = new iSlider({
+            wrap: '#wrap',
+            item: '.item',
+            fullSrc: false,
+            onslide: function (index) {
+                console.info(index)
+
+                var video = new tvp.VideoInfo();
+
+                video.setVid("x00208tth7r");
+
+                var player = new tvp.Player();
+
+                player.create({
+                    width: '100%',
+                    height: '100%',
+                    modId: "player" + (index + 1),
+                    video: video
+                });
+            }
+        });
+
+        slider.slideTo(2);
+    }
+
+
+    $("#show").click(function(){
+        $("#wrap").removeClass("hide");
+    });
+    //initPlayer();
+    initSlider();
+
+
+</script>
+</body>
+</html>
